@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarkNotes | Notas em Markdown</title>
+  <meta name="description" content="Bloco de notas com Markdown e prévia em tempo real, salvo no navegador.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="lateral" id="lateral">
+      <div class="lateral__topo">
+        <p class="marca">Mark<b>Notes</b></p>
+        <button class="btn-nova" id="nova" title="Nova nota (Ctrl+Alt+N)">+ Nova</button>
+      </div>
+      <label class="sr" for="busca">Buscar notas</label>
+      <input id="busca" type="search" placeholder="Buscar notas">
+      <ul class="notas" id="notas"></ul>
+    </aside>
+
+    <main class="area">
+      <header class="barra">
+        <button class="icone so-mobile" id="mostrar-lista" aria-label="Mostrar notas">☰</button>
+        <div class="ferramentas" role="toolbar" aria-label="Formatação">
+          <button data-fmt="h" title="Título">H</button>
+          <button data-fmt="b" title="Negrito (Ctrl+B)"><b>B</b></button>
+          <button data-fmt="i" title="Itálico (Ctrl+I)"><i>I</i></button>
+          <button data-fmt="s" title="Riscado"><s>S</s></button>
+          <button data-fmt="link" title="Link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></button>
+          <button data-fmt="ul" title="Lista">•</button>
+          <button data-fmt="ol" title="Lista numerada">1.</button>
+          <button data-fmt="task" title="Checklist">☐</button>
+          <button data-fmt="quote" title="Citação">❝</button>
+          <button data-fmt="code" title="Código">&lt;/&gt;</button>
+        </div>
+        <div class="modos" role="tablist" aria-label="Modo de visualização">
+          <button data-modo="editar">Editar</button>
+          <button data-modo="dividir" class="ativo">Dividir</button>
+          <button data-modo="ver">Ver</button>
+        </div>
+        <div class="mais">
+          <button class="icone" id="fixar" title="Fixar nota" aria-label="Fixar nota"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M8 3h8l-1 6 3 4H6l3-4z"/></svg></button>
+          <button class="icone" id="baixar" title="Baixar .md" aria-label="Baixar arquivo .md"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg></button>
+          <button class="icone perigo" id="excluir" title="Excluir nota" aria-label="Excluir nota"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button>
+        </div>
+      </header>
+
+      <div class="paineis modo-dividir" id="paineis">
+        <label class="sr" for="editor">Texto em Markdown</label>
+        <textarea id="editor" spellcheck="true" placeholder="Escreva em Markdown..."></textarea>
+        <article class="previa" id="previa" aria-live="polite"></article>
+      </div>
+
+      <footer class="status">
+        <span id="contagem">0 palavras</span>
+        <span id="salvo">Salvo</span>
+      </footer>
+    </main>
+  </div>
+  <script src="js/markdown.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
